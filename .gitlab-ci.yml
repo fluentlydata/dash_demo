@@ -38,6 +38,7 @@ deploy:
   - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
   script:
+    - ssh fluentlydata@${DEPLOYMENT_SERVER_IP} "mkdir -p /home/${CI_PROJECT_PATH}"
     - scp -r * fluentlydata@${DEPLOYMENT_SERVER_IP}:/home/${CI_PROJECT_PATH}/
     - ssh fluentlydata@${DEPLOYMENT_SERVER_IP} "cd /home/${CI_PROJECT_PATH}; docker-compose up --build -d"
 
