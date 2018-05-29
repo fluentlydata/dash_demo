@@ -6,7 +6,9 @@ services:
     container_name: dash_app
     restart: always
     build: ./dash_app
-    command: gunicorn -w 1 --b 0.0.0.0:80 app:server
+    environment:
+      VIRTUAL_HOST: dash.fluentlydata.ch
+    command: gunicorn -w 1 --bind 0.0.0.0:80 app:server
 
 networks:                                                                                           
   default:                                                                                          
