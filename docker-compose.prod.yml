@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  dash_app:
+    container_name: dash_app
+    restart: always
+    build: ./dash_app
+    command: gunicorn -w 1 -b :80 app:server
+
+  networks:                                                                                           
+    default:                                                                                          
+      external:                                                                                       
+        name: nginx-net
+

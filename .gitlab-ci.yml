@@ -40,6 +40,6 @@ deploy:
   script:
     - ssh fluentlydata@${DEPLOYMENT_SERVER_IP} "mkdir -p /home/${CI_PROJECT_PATH}"
     - scp -r * fluentlydata@${DEPLOYMENT_SERVER_IP}:/home/${CI_PROJECT_PATH}/
-    - ssh fluentlydata@${DEPLOYMENT_SERVER_IP} "cd /home/${CI_PROJECT_PATH}; docker-compose up --build -d"
+    - ssh fluentlydata@${DEPLOYMENT_SERVER_IP} "cd /home/${CI_PROJECT_PATH}; docker-compose -f docker-compose.prod.yml up --build -d"
 
 
