@@ -8,7 +8,12 @@ services:
     build: ./dash_app
     ports:
       - "8000:8000"
-    command: gunicorn -w 1 -b :8000 app:server
+    command: flask run --host=0.0.0.0 --port 8000 
+    environment:
+      FLASK_APP: /usr/src/app.py
+      FLASK_DEBUG: 1
+    volumes:
+      - ./dash_app/:/usr/src
 
 
   nginx:
